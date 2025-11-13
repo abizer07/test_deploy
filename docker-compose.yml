@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - PYTHONUNBUFFERED=1
+      - TALLY_API_URL=https://post.api2books.com/<your-tenant>/post  # <-- set to your Tally URL
+      - TALLY_API_KEY=test_8ea004c35035479fb753a1b8e3f602c9
+      - TALLY_API_KEY_HEADER=x-api-key  # or "Authorization" (default uses Bearer token)
