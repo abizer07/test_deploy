@@ -36,7 +36,7 @@ class TallyService:
         """
         try:
             # Convert Pydantic model to dict
-            payload = sales_data.dict(by_alias=True)
+            payload = sales_data.model_dump(by_alias=True)
             
             print(f"Making request to: {self.tally_api_url}")
             print(f"Headers: {self._get_headers()}")

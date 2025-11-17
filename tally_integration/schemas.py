@@ -63,11 +63,17 @@ class SalesWithoutInventoryItem(BaseModel):
 class SalesWithoutInventoryRequest(BaseModel):
     body: List[SalesWithoutInventoryItem]
 
+from typing import Union, Optional
+from pydantic import BaseModel
+
 class TallyResponse(BaseModel):
     success: bool
     message: str
-    data: Optional[dict] = None
-    status_code: Optional[int] = None
+    data: Optional[Union[dict, str, list]] = None
+    status_code: int
+
+    class Config:
+        arbitrary_types_allowed = True
 
 class DeleteUploadedDataRequest(BaseModel):
     IsFileReceived: str = "true"
